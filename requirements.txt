@@ -6,3 +6,7 @@ openai
 tiktoken
 pypdf
 pandas
+pdfminer.six
+langchain_community
+openpyxl
+pdf2image

@@ -1,8 +1,10 @@
 locale,key,value
 
-en_US,load_text,chuncks loaded into Astra DB
-en_US,load_pdf,chuncks loaded into Astra DB
-en_US,load_csv,chuncks loaded into Astra DB
+en_US,load_text,Text chunks loaded into Astra DB
+en_US,load_pdf,PDF chunks loaded into Astra DB
+en_US,load_csv,CSV chunks loaded into Astra DB
+en_US,load_excel,Excel chunks loaded into Astra DB
+en_US,load_image,Image chunks loaded into Astra DB
 en_US,load_embedding,Getting the OpenAI embedding...
 en_US,load_vectorstore,Getting the Vector Store from Astra DB...
 en_US,load_message_history,Getting the Message History from Astra DB...

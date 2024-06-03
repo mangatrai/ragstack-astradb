@@ -8,16 +8,17 @@ import uuid
 import streamlit as st
 
 from langchain.chat_models import ChatOpenAI
-from langchain.vectorstores import AstraDB
+from langchain_community.vectorstores import AstraDB
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.memory import ConversationBufferWindowMemory
 from langchain.memory import AstraDBChatMessageHistory
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.document_loaders import PyPDFLoader, CSVLoader
 from langchain.schema import HumanMessage, AIMessage
 from langchain.prompts import ChatPromptTemplate
 from langchain.schema.runnable import RunnableMap
 from langchain.schema import StrOutputParser
+from langchain_community.document_loaders import UnstructuredExcelLoader, PyPDFLoader, CSVLoader
+from langchain_community.document_loaders.image import UnstructuredImageLoader
 
 from langchain.callbacks.base import BaseCallbackHandler
 
@@ -151,7 +152,7 @@ def vectorize_text(uploaded_files):
 
                 vectorstore.add_documents(docs)
                 st.info(f"{len(docs)} {lang_dict['load_csv']}")
-
+                
 # Load data from URLs
 def vectorize_url(urls):
     # Create the text splitter
@@ -223,7 +224,7 @@ def load_model():
     # Get the OpenAI Chat Model
     return ChatOpenAI(
         temperature=0.3,
-        model='gpt-4-1106-preview',
+        model='gpt-4-turbo',
         streaming=True,
         verbose=True
     )
