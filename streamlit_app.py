@@ -7,12 +7,22 @@ import uuid
 
 import streamlit as st
 
+<<<<<<< HEAD
 from langchain.chat_models import ChatOpenAI
 from langchain_community.vectorstores import AstraDB
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.memory import ConversationBufferWindowMemory
 from langchain.memory import AstraDBChatMessageHistory
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+=======
+from langchain_community.vectorstores import AstraDB
+from langchain_openai import OpenAIEmbeddings
+from langchain_openai import ChatOpenAI
+from langchain.memory import ConversationBufferWindowMemory
+from langchain.memory import AstraDBChatMessageHistory
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_community.document_loaders import PyPDFLoader, CSVLoader, WebBaseLoader
+>>>>>>> 965131bd7ac932657e095bf02a4a3550e95bb3ab
 from langchain.schema import HumanMessage, AIMessage
 from langchain.prompts import ChatPromptTemplate
 from langchain.schema.runnable import RunnableMap
@@ -21,8 +31,6 @@ from langchain_community.document_loaders import UnstructuredExcelLoader, PyPDFL
 from langchain_community.document_loaders.image import UnstructuredImageLoader
 
 from langchain.callbacks.base import BaseCallbackHandler
-
-from langchain.document_loaders import WebBaseLoader
 
 import openai
 
@@ -169,8 +177,8 @@ def vectorize_url(urls):
             print (f"Loading from URL: {pages}")
             vectorstore.add_documents(pages)  
             st.info(f"{len(pages)} loaded")
-        except:
-            st.info(f"An error occurred", )
+        except Exception as e:
+            st.info(f"An error occurred:", e)
 
 # Define the prompt
 def get_prompt(type):
@@ -353,7 +361,7 @@ def load_embedding():
 # Cache Vector Store for future runs
 @st.cache_resource(show_spinner=lang_dict['load_vectorstore'])
 def load_vectorstore(username):
-    print("load_vectorstore")
+    print(f"load_vectorstore for {username}")
     # Get the load_vectorstore store from Astra DB
     return AstraDB(
         embedding=embedding,
