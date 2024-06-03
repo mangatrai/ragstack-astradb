@@ -7,22 +7,12 @@ import uuid
 
 import streamlit as st
 
-<<<<<<< HEAD
 from langchain.chat_models import ChatOpenAI
 from langchain_community.vectorstores import AstraDB
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.memory import ConversationBufferWindowMemory
 from langchain.memory import AstraDBChatMessageHistory
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-=======
-from langchain_community.vectorstores import AstraDB
-from langchain_openai import OpenAIEmbeddings
-from langchain_openai import ChatOpenAI
-from langchain.memory import ConversationBufferWindowMemory
-from langchain.memory import AstraDBChatMessageHistory
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.document_loaders import PyPDFLoader, CSVLoader, WebBaseLoader
->>>>>>> 965131bd7ac932657e095bf02a4a3550e95bb3ab
 from langchain.schema import HumanMessage, AIMessage
 from langchain.prompts import ChatPromptTemplate
 from langchain.schema.runnable import RunnableMap
